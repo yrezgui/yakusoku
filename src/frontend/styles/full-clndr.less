@@ -1,0 +1,119 @@
+.box-shadow(@content) {
+  -webkit-box-shadow: @content;
+     -moz-box-shadow: @content;
+          box-shadow: @content;
+}
+
+.vertical-padding(@size: 5px)
+{
+  padding-top: @size;
+  padding-bottom: @size;
+}
+
+.noselect
+{
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+#full-clndr
+{
+  background-color: @light-gray;
+  font-weight: 700;
+  .box-shadow(4px 4px 0 darken(@dark-gray, 5%));
+  width: 100%;
+
+  .clndr-grid
+  {
+    float: left;
+    width: 100%;
+
+     .controls
+    {
+      background-color: @dark-blue;
+      color: white;
+
+      .clndr-previous-button, .clndr-next-button
+      {
+        width: 15%;
+        .vertical-padding;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        .noselect;
+        &:hover
+        {
+          background-color: darken(@dark-blue, 10%);
+        }
+      }
+      .month
+      {
+        width: 70%;
+        .vertical-padding;
+        display: inline-block;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+
+    .days-of-the-week
+    {
+      width: 100%;
+      background-color: @blue;
+
+      .header-day
+      {
+        float: left;
+        width: 14.2857%;
+        padding: 14px;
+        text-align: center;
+        color: white;
+      }
+    }
+
+    .days
+    {
+      width: 100%;
+
+      .day, .empty
+      {
+        float: left;
+        width: 14.2857%;
+        height: 66px;
+        padding: 24px 0;
+
+        text-align: center;
+        color: #4f4f4f;
+        background-color: @light-gray;
+        border-bottom: 2px solid white;
+
+        &.event
+        {
+          .day-number
+          {
+            padding-bottom: 4px;
+            color: @red;
+          }
+        }
+
+        &.adjacent-month
+        {
+          .day-number
+          {
+            opacity: 0.3;
+          }
+        }
+      }
+
+      .today
+      {
+        background-color: white;
+        background-image: none;
+      }
+
+    }
+  }
+}
