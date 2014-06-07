@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CLNDR.js</title>
+    <link rel="stylesheet" href="css/clndr.css">
+  </head>
+  <body>
+
+    <div class="wrap">
+      <div class="block bg-gray">
+        <div class="inner">
+          <h1 class="banner-text">Yakusoku | Realtime appointments system</h1>
+
+          <div id="full-clndr" class="clearfix">
+            <script type="text/template" id="full-clndr-template">
+              <div class="clndr-grid">
+                <div class="controls">
+                  <div class="clndr-previous-button">&lsaquo;</div><div class="month"><%= month + ' ' + year %></div><div class="clndr-next-button">&rsaquo;</div>
+                </div>
+                <div class="days-of-the-week clearfix">
+                  <% _.each(daysOfTheWeek, function(day) { %>
+                    <div class="header-day"><%= day %></div>
+                  <% }); %>
+                </div>
+                <div class="days clearfix">
+                  <% _.each(days, function(day) { %>
+                    <div class="<%= day.classes %>" id="<%= day.id %>"><span class="day-number"><%= day.day %></span></div>
+                  <% }); %>
+                </div>
+              </div>
+            </script>
+          </div>
+
+          <h3 class="banner-text below">Get the code at <a href="http://github.com/yrezgui/yakusoku">http://github.com/yrezgui/yakusoku</a></h3>
+        </div>
+      </div>
+
+      <div class="block bg-green">
+        <div class="inner">
+          <h3>What's that ?</h3>
+          <p>Yakusoku is a simple open source project to show how simple it is to have a realtime appointments system. It uses different components :</p>
+          <ul>
+            <li><a href="http://orchestrate.io/">Orchestrate</a> for storing the data</li>
+            <li><a href="http://pusher.com/">Pusher</a> for sending in realtime the new appointments across all the browsers</li>
+            <li><a href="http://kylestetz.github.io/CLNDR/">CLNDR.js</a> for generating the calendar (I copy the UI of their website too)</li>
+          </ul>
+
+          <br>
+
+          <h3>How to get started</h3>
+          <ol>
+            <li>Clone the repository <a href="http://github.com/yrezgui/yakusoku">http://github.com/yrezgui/yakusoku</a></li>
+            <li>Execute this command from the cloned repository folder: <b>npm install</b></li>
+            <li>Create an account <a href="http://orchestrate.io/">Orchestrate</a></li>
+            <li>Create an account <a href="http://pusher.com/">Pusher</a></li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/clndr.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
