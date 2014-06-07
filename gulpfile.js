@@ -4,10 +4,9 @@ var less        = require('gulp-less');
 var runSequence = require('run-sequence');
 
 var vendorFiles = [
-  './vendor/jquery/dist/jquery.min.js',
-  './vendor/underscore/underscore.js',
-  './vendor/moment/min/moment.min.js',
-  './vendor/clndr/clndr.min.js'
+  './node_modules/jquery/dist/jquery.min.js',
+  './node_modules/underscore/underscore.js',
+  './node_modules/moment/min/moment.min.js'
 ];
 
 gulp.task('clean', function cleanTask() {
