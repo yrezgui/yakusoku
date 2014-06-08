@@ -1,3 +1,5 @@
+var PUSHER_KEY = '2895f7aa264132a7eab7';
+
 function Agenda() {
   this.appointments = {};
 }
@@ -39,6 +41,13 @@ Agenda.prototype = {
     }
 
     return this.appointments[identifier];
+  },
+
+  addAppointment: function addAppointment(data) {
+    this.appointments[data.id] = {
+      date: data.id,
+      attendee: data.attendee
+    };
   },
 
   createAppointment: function createAppointment(date, name) {
@@ -90,5 +99,13 @@ var cal = $('#full-clndr').clndr({
 });
 
 agd.fetchAppointments(new Date()).done(function() {
+  cal.setEvents(agd.getAppointments());
+});
+
+var pusher  = new Pusher(PUSHER_KEY);
+var channel = pusher.subscribe('appointments');
+
+channel.bind('new_appointment', function(data) {
+  agd.addAppointment(data);
   cal.setEvents(agd.getAppointments());
 });
