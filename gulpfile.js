@@ -4,7 +4,7 @@ var less        = require('gulp-less');
 var runSequence = require('run-sequence');
 
 var vendorFiles = [
-  './node_modules/jquery/dist/jquery.min.js',
+  './node_modules/jquery/dist/cdn/jquery-2.1.1.min.js',
   './node_modules/underscore/underscore.js',
   './node_modules/moment/min/moment.min.js'
 ];
