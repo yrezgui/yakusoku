@@ -1,6 +1,13 @@
 var router      = require('express').Router();
 var moment      = require('moment');
-var db = require('orchestrate')(process.env.ORCHESTRATE_TOKEN || 'e5401146-f72c-442c-9a02-5b1737549d17');
+var Pusher      = require('pusher');
+var db          = require('orchestrate')(process.env.ORCHESTRATE_TOKEN);
+
+var pusher = new Pusher({
+  appId: process.env.PUSHER_APPID,
+  key: process.env.PUSHER_KEY,
+  secret: process.env.PUSHER_SECRET
+});
 
 var COLLECTION = 'appointments';
 
@@ -35,7 +42,16 @@ router.post('/', function(req, res, next) {
 
   db.put(COLLECTION, identifier.format('YYYY-MM-DD'), {attendee: req.body.attendee}, false)
     .then(function (result) {
-      return res.send(201, {id: identifier.format('YYYY-MM-DD'), attendee: req.body.attendee});
+
+      var newAppointment = {
+        'id': identifier.format('YYYY-MM-DD'),
+        'date': identifier.toDate(),
+        'attendee': req.body.attendee
+      };
+
+      pusher.trigger('appointments', 'new_appointment', newAppointment);
+
+      return res.send(201, newAppointment);
     })
     .fail(function (result) {
       return res.send(500, result.body);
