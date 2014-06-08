@@ -33,9 +33,9 @@ router.post('/', function(req, res, next) {
     return res.send(500, {error: 'attendee not valid'});
   }
 
-  db.put('collection', identifier.format('YYYY-MM-DD'), {attendee: req.body.attendee}, false)
+  db.put(COLLECTION, identifier.format('YYYY-MM-DD'), {attendee: req.body.attendee}, false)
     .then(function (result) {
-      return res.send(result.body);
+      return res.send(201, {id: identifier.format('YYYY-MM-DD'), attendee: req.body.attendee});
     })
     .fail(function (result) {
       return res.send(500, result.body);
