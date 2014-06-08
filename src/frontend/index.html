@@ -39,7 +39,7 @@
       <div class="block bg-green">
         <div class="inner">
           <h3>What's that ?</h3>
-          <p>Yakusoku is a simple open source project to show how simple it is to have a realtime appointments system. It uses different components :</p>
+          <p>Yakusoku is a simple open source project to show how simple it is to have a realtime appointments system. It run on NodeJS and uses different components :</p>
           <ul>
             <li><a href="http://orchestrate.io/">Orchestrate</a> for storing the data</li>
             <li><a href="http://pusher.com/">Pusher</a> for sending in realtime the new appointments across all the browsers</li>
@@ -54,8 +54,22 @@
             <li>Execute this command from the cloned repository folder: <b>npm install</b></li>
             <li>Create an account <a href="http://orchestrate.io/">Orchestrate</a></li>
             <li>Create an account <a href="http://pusher.com/">Pusher</a></li>
+            <li>Set these environment variables: 
+              <ul>
+                <li>PUSHER_APPID</li>
+                <li>PUSHER_KEY</li>
+                <li>PUSHER_SECRET</li>
+                <li>ORCHESTRATE_TOKEN</li>
+                <li>PORT (port of the NodeJS server)</li>
+              </ul>
+            </li>
+            <li>And finally: <b>node web.js</b></li>
           </ol>
 
+          <br>
+
+          <h3>Demo</h3>
+          <p>Have a look there : <a href="http://yakusoku.herokuapp.com/">http://yakusoku.herokuapp.com/</a></p>
         </div>
       </div>
     </div>
